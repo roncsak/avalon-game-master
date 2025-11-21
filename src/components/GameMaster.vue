@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { AVALON_CHARACTERS } from '../types/avalon'
+import { SUPPORT_LOCALES } from '../i18n'
 import { useGameStore } from '../stores/gameStore'
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 const props = defineProps<{
   selectedCharacters: string[] // Now contains character IDs
 }>()
@@ -20,7 +21,7 @@ const currentStep = ref(-1)
 const speechSupported = ref(false)
 const voices = ref<SpeechSynthesisVoice[]>([])
 const activeTimeouts = ref<number[]>([])
-const selectedLanguage = ref('')
+const selectedLanguage = ref(locale.value)
 
 // Get character data for selected characters
 const characters = computed(() => 
@@ -69,25 +70,31 @@ const availableLanguages = computed(() => {
     }
   }
 
-  const uniqueLanguages = [...new Set(voices.value.map(voice => voice.lang))]
-    .map(lang => ({
-      title: getLanguageName(lang),
-      value: lang,
-      sortKey: getLanguageName(lang)
+  // Get available speech synthesis languages that are also supported by the game
+  const availableSpeechLanguages = [...new Set(voices.value.map(voice => voice.lang.split('-')[0]))]
+    .filter((langCode): langCode is string => Boolean(langCode))
+  
+  // Only show languages that are both supported by the game AND have speech synthesis voices
+  const supportedLanguages = SUPPORT_LOCALES
+    .filter(gameLanguage => availableSpeechLanguages.includes(gameLanguage))
+    .map(langCode => ({
+      title: getLanguageName(langCode),
+      value: langCode,
+      sortKey: getLanguageName(langCode)
     }))
     .sort((a, b) => a.sortKey.localeCompare(b.sortKey))
     .map(({ title, value }) => ({ title, value }))
     
-  return [{ title: t('gameMaster.allLanguages'), value: '' }, ...uniqueLanguages]
+  return [{ title: t('gameMaster.allLanguages'), value: '' }, ...supportedLanguages]
 })
 
 // Filtered voices for the dropdown
 const filteredVoices = computed(() => {
   let filtered = voices.value
   
-  // Filter by language
+  // Filter by language code (not full locale)
   if (selectedLanguage.value) {
-    filtered = filtered.filter(voice => voice.lang === selectedLanguage.value)
+    filtered = filtered.filter(voice => voice.lang.split('-')[0] === selectedLanguage.value)
   }
   
   return filtered.map((voice) => {
@@ -102,6 +109,7 @@ const filteredVoices = computed(() => {
 // Generate game script
 const gameScript = computed(() => {
   const script = [t('gameScript.initialSpeech')]
+  const minions = t(`characters.minion-of-mordred.name`, 2)
 
   // Evil characters see each other (except those cant reveal itself)
   const minionsAppearGood = evilCharacters.value.filter(c => 
@@ -109,16 +117,16 @@ const gameScript = computed(() => {
   )
 
   const evilReveal = evilCharacters.value.filter(c => 
-    !minionsAppearGood.some(minion => minion.name === c.name)
+    !minionsAppearGood.some(minion => minion.id === c.id)
   )
   
   if (evilReveal.length > 0) {
-    const visibleNames = evilReveal.map(c => t(`characters.${c.id}`)).join(', ')
+    const visibleNames = evilReveal.map(c => t(`characters.${c.id}.name`)).join(', ')
     if (minionsAppearGood.length > 0) {
-      const hiddenNames = minionsAppearGood.map(c => t(`characters.${c.id}`)).join(', ')
-      script.push(t('gameScript.minionsRevealWithHidden', { visibleNames, hiddenNames }))
+      const hiddenNames = minionsAppearGood.map(c => t(`characters.${c.id}.name`)).join(', ')
+      script.push(t('gameScript.minionsRevealWithHidden', { minions, visibleNames, hiddenNames }))
     } else {
-      script.push(t('gameScript.minionsReveal', { names: visibleNames }))
+      script.push(t('gameScript.minionsReveal', { minions, names: visibleNames }))
     }
     script.push(t('gameScript.closeEyes'))
   }
@@ -132,11 +140,11 @@ const gameScript = computed(() => {
     const evilAppearsGoodToMerlin = evilCharacters.value.filter(c => 
       c.appearance?.some(app => app.appears === 'good' && app.to === 'merlin')
     )
-    const visibleToMerlin = [...evilCharacters.value.filter(c => !evilAppearsGoodToMerlin.some(minion => minion.name === c.name)), ...goodAppearsEvilToMerlin];
+    const visibleToMerlin = [...evilCharacters.value.filter(c => !evilAppearsGoodToMerlin.some(minion => minion.id === c.id)), ...goodAppearsEvilToMerlin];
     if (visibleToMerlin.length > 0) {
-      const names = visibleToMerlin.map(c => t(`characters.${c.id}`)).join(', ')
+      const names = visibleToMerlin.map(c => t(`characters.${c.id}.name`)).join(', ')
       script.push(
-        t('gameScript.merlinSees', { names }),
+        t('gameScript.merlinSees', { minions, names }),
         t('gameScript.merlinOpen'),
         t('gameScript.closeEyes')
       )
@@ -150,7 +158,7 @@ const gameScript = computed(() => {
     const visibleToPercival = [...characters.value.filter(c => c.id === 'merlin'), ...playersAppearMerlinToPercival]
     
     if (visibleToPercival.length > 0) {
-      const names = visibleToPercival.map(c => t(`characters.${c.id}`)).join(' and ')
+      const names = visibleToPercival.map(c => t(`characters.${c.id}.name`)).join(t('gameScript.and'))
       script.push(
         t('gameScript.percivalSees', { names }),
         t('gameScript.percivalOpen', { names }),
@@ -174,7 +182,7 @@ const gameScript = computed(() => {
   if (untrustworthy) {
     const visibleToUntrustworthy = characters.value.filter(c => c.id === untrustworthy?.knows)
     if(visibleToUntrustworthy.length > 0) {
-      const names = visibleToUntrustworthy.map(c => t(`characters.${c.id}`)).join(' and ')
+      const names = visibleToUntrustworthy.map(c => t(`characters.${c.id}.name`)).join(t('gameScript.and'))
       script.push(
         t('gameScript.untrustworthySees', { names }),
         t('gameScript.untrustworthyOpen', { names }),
@@ -188,7 +196,7 @@ const gameScript = computed(() => {
   if (untrustworthy_maVariant) {
     const visibleToUntrustworthy_maVariant = characters.value.filter(c => c.id === untrustworthy_maVariant?.knows)
     if(visibleToUntrustworthy_maVariant.length > 0) {
-      const names = visibleToUntrustworthy_maVariant.map(c => t(`characters.${c.id}`)).join(' and ')
+      const names = visibleToUntrustworthy_maVariant.map(c => t(`characters.${c.id}.name`)).join(t('gameScript.and'))
       script.push(
         t('gameScript.untrustworthySees', { names }),
         t('gameScript.untrustworthyOpen', { names }),
@@ -211,7 +219,7 @@ const gameScript = computed(() => {
   if (seniorMessenger) {
     const visibleToSeniorMessenger = characters.value.filter(c => c.id === seniorMessenger?.knows)
     if (visibleToSeniorMessenger.length > 0) {
-      const names = visibleToSeniorMessenger.map(c => t(`characters.${c.id}`)).join(' and ')
+      const names = visibleToSeniorMessenger.map(c => t(`characters.${c.id}.name`)).join(t('gameScript.and'))
       script.push(
         t('gameScript.seniorMessengerSees', { names }),
         t('gameScript.seniorMessengerOpen', { names }),
@@ -223,6 +231,11 @@ const gameScript = computed(() => {
   script.push(t('gameScript.gameBegins'))
   
   return script
+})
+
+// Watch for locale changes and update selected language accordingly
+watch(locale, (newLocale) => {
+  selectedLanguage.value = newLocale
 })
 
 // Speech synthesis functions
@@ -372,7 +385,7 @@ onMounted(() => {
               class="ma-1"
             >
               <v-icon start>{{ character.icon }}</v-icon>
-              {{ t(`characters.${character.id}`) }}
+              {{ t(`characters.${character.id}.name`) }}
             </v-chip>
           </v-card-text>
         </v-card>
@@ -393,7 +406,7 @@ onMounted(() => {
               class="ma-1"
             >
               <v-icon start>{{ character.icon }}</v-icon>
-              {{ t(`characters.${character.id}`) }}
+              {{ t(`characters.${character.id}.name`) }}
             </v-chip>
           </v-card-text>
         </v-card>

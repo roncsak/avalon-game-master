@@ -31,6 +31,19 @@
       "messengers": "Mensajeros"
     }
   },
+  "characterCard": {
+    "maxCount": "Máx: {count}",
+    "pairedWith": "Emparejado con {name}",
+    "messengerGroup": "Grupo Mensajero",
+    "select": "Seleccionar",
+    "remove": "Remover",
+    "add": "Agregar",
+    "selectCharacter": "Seleccionar personaje",
+    "removeCharacter": "Remover personaje",
+    "removeOne": "Remover uno",
+    "addOne": "Agregar uno",
+    "addFirst": "Agregar primero"
+  },
   "gameMaster": {
     "title": "Maestro de Juego",
     "backToSelection": "Atrás",
@@ -51,42 +64,125 @@
     "evilCharactersTitle": "Personajes Malvados ({count})"
   },
   "characters": {
-    "merlin": "Merlín",
-    "percival": "Percival",
-    "loyal-servant": "Servidor Leal de Arturo",
-    "assassin": "Asesino",
-    "morgana": "Morgana",
-    "morgana-assassin": "Morgana",
-    "mordred": "Mordred",
-    "oberon": "Oberón",
-    "minion": "Esbirro de Mordred",
-    "good-lancelot": "Lancelot (Bueno)",
-    "evil-lancelot": "Lancelot (Malo)",
-    "arthur": "Arturo",
-    "gawain": "Gawain",
-    "tristan": "Tristán",
-    "isolde": "Isolda",
-    "gareth": "Gareth",
-    "gaheris": "Gaheris",
-    "guinevere": "Ginebra",
-    "ygraine": "Ygraine",
-    "nimue": "Nimue",
-    "titania": "Titania",
-    "maelegant": "Maelegant",
-    "agravaine": "Agravaine",
-    "colgrevance": "Colgrevance",
-    "lucan": "Lucan",
-    "bedivere": "Bedivere",
-    "galahad": "Galahad",
-    "lunete": "Lunete",
-    "cleric": "Clérigo",
-    "ranger": "Explorador",
-    "untrustworthy-servant": "Servidor Desconfiado",
-    "untrustworthy-servant-assassin": "Servidor Desconfiado",
-    "senior-messenger": "Mensajero Senior",
-    "messenger": "Mensajero"
+    "merlin": {
+      "name": "Merlín",
+      "description": "Conoce a todos los jugadores malvados excepto Mordred. Debe permanecer oculto del Asesino."
+    },
+    "percival": {
+      "name": "Percival",
+      "description": "Ve a Merlín y Morgana, pero no sabe cuál es cuál."
+    },
+    "loyal-servant": {
+      "name": "Servidor Leal de Arturo",
+      "description": "Un jugador bueno sin habilidades especiales. Confía en la observación y deducción."
+    },
+    "assassin": {
+      "name": "Asesino",
+      "description": "Si los malvados pierden, puede ganar identificando correctamente a Merlín."
+    },
+    "morgana": {
+      "name": "Morgana",
+      "description": "Aparece como Merlín ante Percival. Conoce a todos los demás jugadores malvados."
+    },
+    "morgana-assassin": {
+      "name": "Morgana",
+      "description": "Actúa como Morgana y Asesino. Aparece como Merlín ante Percival."
+    },
+    "mordred": {
+      "name": "Mordred",
+      "description": "Oculto de la vista de Merlín. Conoce a todos los demás jugadores malvados."
+    },
+    "oberon": {
+      "name": "Oberón",
+      "description": "Oculto de otros jugadores malvados y ellos están ocultos de él."
+    },
+    "minion-of-mordred": {
+      "name": "Esbirro de Mordred",
+      "description": "Un jugador malvado básico. Conoce a todos los demás jugadores malvados excepto Oberón."
+    },
+    "good-lancelot": {
+      "name": "Lancelot Bueno",
+      "description": "Cambia de bando después de cada misión fallida. Comienza bueno."
+    },
+    "evil-lancelot": {
+      "name": "Lancelot Malo",
+      "description": "Cambia de bando después de cada misión fallida. Comienza malvado."
+    },
+    "good-lancelot-unknown": {
+      "name": "Lancelot Bueno",
+      "description": "Cambia de bando después de cada misión fallida. Bando inicial desconocido."
+    },
+    "evil-lancelot-unknown": {
+      "name": "Lancelot Malo",
+      "description": "Cambia de bando después de cada misión fallida. Bando inicial desconocido."
+    },
+    "cleric": {
+      "name": "Clérigo",
+      "description": "Al inicio, ve si el primer líder de misión es bueno o malvado."
+    },
+    "troublemaker": {
+      "name": "Alborotador",
+      "description": "Un jugador bueno sin habilidades especiales que crea confusión."
+    },
+    "good-rogue": {
+      "name": "Pícaro Bueno",
+      "description": "Un jugador bueno con habilidades de deducción mejoradas."
+    },
+    "evil-rogue": {
+      "name": "Pícaro Malo",
+      "description": "Un jugador malvado con habilidades de engaño mejoradas."
+    },
+    "good-sorcerer": {
+      "name": "Hechicero Bueno",
+      "description": "Un jugador bueno con habilidades de percepción mágica."
+    },
+    "evil-sorcerer": {
+      "name": "Hechicero Malo",
+      "description": "Un jugador malvado con habilidades de engaño mágico."
+    },
+    "untrustworthy-servant": {
+      "name": "Servidor Desconfiado",
+      "description": "Un jugador bueno que parece sospechoso pero es leal a Arturo."
+    },
+    "untrustworthy-servant-assassin": {
+      "name": "Servidor Desconfiado",
+      "description": "Actúa como Servidor Desconfiado y Asesino."
+    },
+    "messenger": {
+      "name": "Mensajero Malo",
+      "description": "Un jugador malvado que puede comunicarse en secreto con aliados."
+    },
+    "senior-messenger": {
+      "name": "Mensajero Bueno",
+      "description": "Un jugador bueno que puede transmitir información a aliados."
+    },
+    "junior-messenger": {
+      "name": "Mensajero Junior Bueno",
+      "description": "Un jugador bueno que asiste en la comunicación."
+    },
+    "trickster": {
+      "name": "Embaucador",
+      "description": "Un jugador caótico cuya verdadera lealtad no está clara."
+    },
+    "lunatic": {
+      "name": "Lunático",
+      "description": "Un jugador con comportamiento y habilidades impredecibles."
+    },
+    "brute": {
+      "name": "Bruto",
+      "description": "Un jugador que confía en la fuerza y la intimidación."
+    },
+    "revealer": {
+      "name": "Revelador",
+      "description": "Un jugador con la habilidad de exponer información oculta."
+    },
+    "leader": {
+      "name": "Líder",
+      "description": "El primer líder de misión con responsabilidades especiales."
+    }
   },
   "gameScript": {
+    "and": " y ",
     "initialSpeech": "Todos cierren los ojos y extiendan sus manos en puños frente a ustedes.",
     "minionsReveal": "Esbirros de Mordred, {names}. Abran los ojos y vean a sus compañeros malvados.",
     "minionsRevealWithHidden": "Esbirros de Mordred, {visibleNames} pero no {hiddenNames}. Abran los ojos y vean a sus compañeros malvados.",

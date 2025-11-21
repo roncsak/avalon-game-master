@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import type { Character } from '../types/avalon'
 import { AVALON_CHARACTERS, getMessengerCharacters } from '../types/avalon'
+
+const { t, locale } = useI18n()
 
 const props = defineProps<{
   character: Character
@@ -31,7 +34,7 @@ const getCharacterVariant = computed(() => {
 const getPairedCharacterName = computed(() => {
   if (!props.character.pairedWith) return null
   const pairedCharacter = AVALON_CHARACTERS.find(c => c.id === props.character.pairedWith)
-  return pairedCharacter?.name || props.character.pairedWith
+  return pairedCharacter?.id || props.character.pairedWith
 })
 
 const isMessengerCharacter = computed(() => {
@@ -83,11 +86,14 @@ const removeCharacter = () => {
       </div>
       
       <h3 class="text-h6 mb-2" :class="getCharacterCount > 0 ? 'text-white' : ''">
-        {{ character.name }}
+        {{ t(`characters.${character.id}.name`) }}
+        <span v-if="locale !== 'en'" class="text-caption d-block text-white-darken-1">
+          ({{ t(`characters.${character.id}.name`, {}, { locale: 'en' }) }})
+        </span>
       </h3>
       
       <p class="text-body-2" :class="getCharacterCount > 0 ? 'text-grey-lighten-2' : 'text-grey'">
-        {{ character.description }}
+        {{ t(`characters.${character.id}.description`) }}
       </p>
       
       <!-- Max count indicator -->
@@ -98,7 +104,7 @@ const removeCharacter = () => {
         :color="getCharacterColor"
         class="mt-2"
       >
-        Max: {{ character.maxCount }}
+        {{ t('characterCard.maxCount', { count: character.maxCount }) }}
       </v-chip>
       
       <!-- Pairing indicator -->
@@ -110,7 +116,7 @@ const removeCharacter = () => {
         class="mt-2"
       >
         <v-icon start size="16">mdi-link-variant</v-icon>
-        Paired with {{ getPairedCharacterName }}
+        {{ t('characterCard.pairedWith') }} {{ t(`characters.${getPairedCharacterName}.name`) }}
       </v-chip>
       
       <!-- Messenger indicator -->
@@ -122,7 +128,7 @@ const removeCharacter = () => {
         class="mt-2"
       >
         <v-icon start size="16">mdi-message-settings</v-icon>
-        Messenger Group
+        {{ t('characterCard.messengerGroup') }}
       </v-chip>
     </v-card-text>
     
@@ -134,18 +140,18 @@ const removeCharacter = () => {
           :color="getCharacterColor"
           variant="outlined"
           @click.stop="addCharacter"
-          title="Select character"
+          :title="t('characterCard.selectCharacter')"
         >
-          Select
+          {{ t('characterCard.select') }}
         </v-btn>
         <v-btn
           v-else
           color="white"
           variant="elevated"
           @click.stop="removeCharacter"
-          title="Remove character"
+          :title="t('characterCard.removeCharacter')"
         >
-          Remove
+          {{ t('characterCard.remove') }}
         </v-btn>
       </template>
       <template v-else>
@@ -158,7 +164,7 @@ const removeCharacter = () => {
             icon="mdi-minus"
             @click.stop="removeCharacter"
             class="me-2"
-            title="Remove one"
+            :title="t('characterCard.removeOne')"
           ></v-btn>
           <v-btn
             size="small"
@@ -167,7 +173,7 @@ const removeCharacter = () => {
             icon="mdi-plus"
             @click.stop="addCharacter"
             :disabled="getCharacterCount >= character.maxCount"
-            title="Add one"
+            :title="t('characterCard.addOne')"
           ></v-btn>
         </template>
         <template v-else>
@@ -175,9 +181,9 @@ const removeCharacter = () => {
             :color="getCharacterColor"
             variant="outlined"
             @click.stop="addCharacter"
-            title="Add first"
+            :title="t('characterCard.addFirst')"
           >
-            Add
+            {{ t('characterCard.add') }}
           </v-btn>
         </template>
       </template>

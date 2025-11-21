@@ -5,104 +5,200 @@
     "language": "Nyelv"
   },
   "characterSelection": {
-    "title": "Karakterek",
-    "subtitle": "Choose your game mode and characters",
-    "playerCount": "Player Count",
-    "gameModules": "Game Modules",
-    "characters": "Characters",
-    "selectedCharacters": "Selected Characters",
-    "goodCharacters": "Good Characters",
-    "evilCharacters": "Evil Characters",
-    "startGame": "Start Game",
-    "resetSelection": "Reset Selection",
+    "title": "Karakterválasztás",
+    "subtitle": "Válaszd ki a játék módot és karaktereket",
+    "playerCount": "Játékosok száma",
+    "gameModules": "Játék modulok",
+    "characters": "Karakterek",
+    "selectedCharacters": "Kiválasztott karakterek",
+    "goodCharacters": "Jó karakterek",
+    "evilCharacters": "Gonosz karakterek",
+    "startGame": "Játék indítása",
+    "resetSelection": "Visszaállítás",
     "validation": {
-      "playerCountRequired": "Please select a player count between 5 and 10",
-      "charactersRequired": "Please select exactly {count} characters",
-      "incompatibleCharacters": "Cannot select {character1} and {character2} together",
-      "moduleRequired": "At least one module must be selected"
+      "playerCountRequired": "Kérjük válassz 5 és 10 közötti játékos számot",
+      "charactersRequired": "Kérjük válassz pontosan {count} karaktert",
+      "incompatibleCharacters": "Nem választható ki {character1} és {character2} egyszerre",
+      "moduleRequired": "Legalább egy modult ki kell választani"
     },
     "modules": {
-      "all": "All Characters",
-      "standard": "Standard Game",
+      "all": "Minden karakter",
+      "standard": "Alap játék",
       "lancelot": "Lancelot",
-      "morgana-assassin": "Morgana as Assassin",
-      "rogue": "Rogue",
-      "sorcerer": "Sorcerer", 
-      "messengers": "Messengers"
+      "morgana-assassin": "Morgana mint Assassin",
+      "rogue": "Zsiványok",
+      "sorcerer": "Varázslók", 
+      "messengers": "Hírnökök"
     }
+  },
+  "characterCard": {
+    "maxCount": "Max: {count}",
+    "pairedWith": "Párosítva: ",
+    "messengerGroup": "Csoportban: @:characterSelection.modules.messengers",
+    "select": "Kiválaszt",
+    "remove": "Eltávolít",
+    "add": "Hozzáad",
+    "selectCharacter": "Karakter kiválasztása",
+    "removeCharacter": "Karakter eltávolítása",
+    "removeOne": "Egy eltávolítása",
+    "addOne": "Egy hozzáadása",
+    "addFirst": "Első hozzáadása"
   },
   "gameMaster": {
     "title": "Játékmester",
     "backToSelection": "Vissza",
     "newGame": "Új játék",
-    "speechSettings": "Speech Settings",
-    "gameScript": "Game Script",
-    "startNarration": "Start Narration",
-    "stopNarration": "Stop Narration",
-    "filterByLanguage": "Filter by Language",
-    "voice": "Voice",
-    "speed": "Speed",
-    "pitch": "Pitch",
-    "allLanguages": "All Languages",
-    "noVoicesMatch": "No voices match your filters",
-    "speechNotSupported": "Speech synthesis is not supported in your browser. You can still read the script manually.",
-    "narrationInProgress": "Game narration is in progress. Each step will be spoken aloud with pauses.",
-    "goodCharactersTitle": "Good Characters ({count})",
-    "evilCharactersTitle": "Evil Characters ({count})"
+    "speechSettings": "Beszéd beállítások",
+    "gameScript": "Narráció",
+    "startNarration": "Narráció indítása",
+    "stopNarration": "Narráció leállítása",
+    "filterByLanguage": "Szűrés nyelv szerint",
+    "voice": "Hang",
+    "speed": "Sebesség",
+    "pitch": "Hangmagasság",
+    "allLanguages": "Minden nyelv",
+    "noVoicesMatch": "Nincs találat",
+    "speechNotSupported": "A beszédszintézist (Speech synthesis) nem támogatja a böngésződ.",
+    "narrationInProgress": "Narráció folyamatban. Az instruciók között rövid szünetek vannak.",
+    "goodCharactersTitle": "Gonosz karakterek ({count})",
+    "evilCharactersTitle": "Jó karakterek ({count})"
   },
   "characters": {
-    "merlin": "Merlin",
-    "percival": "Percival", 
-    "loyal-servant": "Loyal Servant of Arthur",
-    "assassin": "Assassin",
-    "morgana": "Morgana",
-    "morgana-assassin": "Morgana",
-    "mordred": "Mordred",
-    "oberon": "Oberon",
-    "minion": "Minion of Mordred",
-    "good-lancelot": "Lancelot (Good)",
-    "evil-lancelot": "Lancelot (Evil)",
-    "arthur": "Arthur",
-    "gawain": "Gawain",
-    "tristan": "Tristan",
-    "isolde": "Isolde",
-    "gareth": "Gareth",
-    "gaheris": "Gaheris",
-    "guinevere": "Guinevere",
-    "ygraine": "Ygraine",
-    "nimue": "Nimue",
-    "titania": "Titania",
-    "maelegant": "Maelegant",
-    "agravaine": "Agravaine",
-    "colgrevance": "Colgrevance",
-    "lucan": "Lucan",
-    "bedivere": "Bedivere",
-    "galahad": "Galahad",
-    "lunete": "Lunete",
-    "cleric": "Cleric",
-    "ranger": "Ranger",
-    "untrustworthy-servant": "Untrustworthy Servant",
-    "untrustworthy-servant-assassin": "Untrustworthy Servant",
-    "senior-messenger": "Senior Messenger",
-    "messenger": "Messenger"
+    "merlin": {
+      "name": "Merlin",
+      "description": "Ismeri a gonoszokat. Rejtve kell maradnia."
+    },
+    "percival": {
+      "name": "Percival",
+      "description": "Ismeri: @:characters.merlin.name"
+    },
+    "loyal-servant": {
+      "name": "Artúr hű szolgája | Artúr hű szolgái",
+      "description": "Jó játékos speciális képességek nélkül."
+    },
+    "troublemaker": {
+      "name": "Bajkeverő",
+      "description": "Hazudnia kell arról, hogy melyik csapathoz tartozik."
+    },
+    "cleric": {
+      "name": "Pap",
+      "description": "Titokban megismeri az első @:characters.leader.name -t."
+    },
+    "untrustworthy-servant": {
+      "name": "Megbízhatatlan szolgáló",
+      "description": "@:characters.merlin.name gonosznak látja. Ismeri: @:characters.assassin.name . Nem játszhat ki Quest Fail kártyát. Gonosszá válhat a játék végén."
+    },
+    "untrustworthy-servant-assassin": {
+      "name": "Megbízhatatlan szolgáló",
+      "description": "@:characters.merlin.name gonosznak látja. Ismeri: @:characters.morgana.name .  Nem játszhat ki Quest Fail kártyát. Gonosszá válhat a játék végén."
+    },
+    "good-lancelot": {
+      "name": "Jó Lancelot",
+      "description": "Ismeri @:characters.evil-lancelot.name @:characters.good-lancelot-unknown.description"
+    },
+    "good-lancelot-unknown": {
+      "name": "Jó Lancelot",
+      "description": "Csapatot válthat."
+    },
+    "good-rogue": {
+      "name": "Jó Zsivány",
+      "description": "Kijátszhat Rogue Success kártyát."
+    },
+    "good-sorcerer": {
+      "name": "Jó Varázsló",
+      "description": "Kijátszhat Magic kártyát."
+    },
+    "assassin": {
+      "name": "Merénylő",
+      "description": "Három sikeres küldetést követően aktiválhatja a Merénylet fázist."
+    },
+    "morgana": {
+      "name": "Morgana",
+      "description": "Van aki azt gondolja róla, hogy ő @:characters.merlin.name"
+    },
+    "morgana-assassin": {
+      "name": "Morgana",
+      "description": "@:characters.morgana.description . @:characters.assassin.description"
+    },
+    "mordred": {
+      "name": "Mordred",
+      "description": "@:characters.merlin.name nem látja őt."
+    },
+    "oberon": {
+      "name": "Oberon",
+      "description": "A gonszok nem látják őt és ő sem a gonoszokat."
+    },
+    "minion-of-mordred": {
+      "name": "Mordred csatlósa | Mordred csatlósai",
+      "description": "Gonosz játékos speciális képességek nélkül."
+    },
+    "trickster": {
+      "name": "Szélhámos",
+      "description": "Hazudhat a csapatáról."
+    },
+    "lunatic": {
+      "name": "Őrült",
+      "description": "Csak Quest Fail kártyát játszhat ki."
+    },
+    "brute": {
+      "name": "Behemót",
+      "description": "Csak az első három Küldetésen játszhat ki Quest Fail kártyát."
+    },
+    "revealer": {
+      "name": "Kérkedő",
+      "description": "A második elbukott küldetés után felfedi, hogy melyik csapathoz tartozik."
+    },
+    "evil-lancelot": {
+      "name": "Gonosz Lancelot",
+      "description": "Ismeri: @:characters.good-lancelot.name @:characters.evil-lancelot-unknown.description"
+    },
+    "evil-lancelot-unknown": {
+      "name": "Gonosz Lancelot",
+      "description": "Csapatot válthat."
+    },
+    "evil-rogue": {
+      "name": "Gonosz Zsivány",
+      "description": "Kijátszhat Rogue Fail kártyát. @:characters.oberon.description"
+    },
+    "evil-sorcerer": {
+      "name": "Gonosz Varázsló",
+      "description": "Kijátszhat Magic kártyát. Nem játszhat ki Quest Fail kártyát."
+    },
+    "messenger": {
+      "name": "Gonosz Hírnök",
+      "description": "Kijátszhat Gonosz Message kártyát."
+    },
+    "senior-messenger": {
+      "name": "Good Messenger",
+      "description": "Ismeri: @:characters.junior-messenger.name  @:characters.junior-messenger.description"
+    },
+    "junior-messenger": {
+      "name": "Jó Ifjú Hírnök",
+      "description": "Kijátszhat Jó Message kártyát."
+    },
+    "leader": {
+      "name": "Csapatvezér",
+      "description": "Az első küldetés vezetője különleges felelősségekkel."
+    }
   },
   "gameScript": {
-    "initialSpeech": "Everyone close your eyes and extend your hands into fists in front of you.",
-    "minionsReveal": "Minions of Mordred, {names}. Open your eyes and see your fellow evil players.",
-    "minionsRevealWithHidden": "Minions of Mordred, {visibleNames} but not {hiddenNames}. Open your eyes and see your fellow evil players.",
-    "closeEyes": "Now, close your eyes and reform your hands into fists.",
-    "merlinSees": "Minions of Mordred, {names}. Extend your thumbs.",
-    "merlinOpen": "Merlin, open your eyes and see the characters who appear evil to you.",
-    "percivalSees": "{names}. Extend your thumbs so Percival can see you.",
-    "percivalOpen": "Percival, open your eyes and see {names}.",
-    "clericCheck": "Leader, extend your thumb if you are evil.",
-    "clericOpen": "Cleric, open your eyes and see the alignment of the Leader.",
-    "untrustworthySees": "{names}. Extend your thumb so the Untrustworthy Servant can see you.",
-    "untrustworthyOpen": "Untrustworthy Servant, open your eyes and see the {names}.",
-    "lancelots": "Lancelots. It's your turn now. Open your eyes to reveal your counterpart.",
-    "lancelotsClose": "Now, close your eyes.",
-    "seniorMessengerSees": "{names}. Extend your thumb so the Senior Messenger can see you.",
-    "seniorMessengerOpen": "Senior Messenger, open your eyes and see the {names}.",
-    "gameBegins": "Everyone open your eyes. The game begins!"
+    "and": " és ",
+    "initialSpeech": "Mindenki csukja be a szemét és tartsa az ökölbe szorított kezét maga elé.",
+    "minionsReveal": "{minions}, {names}. Nyissátok ki a szemeteket és ismerjétek meg társaitokat.",
+    "minionsRevealWithHidden": "{minions}, {visibleNames}, kivéve {hiddenNames}. Nyissátok ki a szemeteket és ismerjétek meg társaitokat.",
+    "closeEyes": "Most csukjátok be a szemeteket és ismételten szorítsátok ökölbe a kezeteket.",
+    "merlinSees": "{minions}, {names}. Mutassatok oké jelet.",
+    "merlinOpen": "@:characters.merlin , nyisd ki a szemed és nézd meg, hogy kik mutatkoznak gonosznak számodra.",
+    "percivalSees": "{names}. Mutassatok oké jelet, hogy @:characters.percival felfedezhessen titeket.",
+    "percivalOpen": "@:characters.percival , nyisd ki a szemed, hogy lásd a következő karaktereket: {names}.",
+    "clericCheck": "@:characters.leader , mutass oké jelet, amennyiben gonosznak kell mutatkoznod.",
+    "clericOpen": "@:characters.cleric , nyisd ki a szemed és nézd meg a @:characters.leader hovatartozását.",
+    "untrustworthySees": "{names}. Mutass oké jelet, hogy a @:characters.untrustworthy-servant felfedezhessen.",
+    "untrustworthyOpen": "@:characters.untrustworthy-servant, nyisd ki a szemed, hogy lásd a következő karaktereket: {names}.",
+    "lancelots": "Lancelotok, ti következtek. Nyissátok ki a szemeteket, hogy felfedezzétek egymást.",
+    "lancelotsClose": "Most, csukjátok be a szemeteket.",
+    "seniorMessengerSees": "{names}. Mutass oké jelet, hogy a @:characters.senior-messenger felfedezhessen téged.",
+    "seniorMessengerOpen": "@:characters.senior-messenger , nyisd ki a szemed, hogy megtudd ki a {names}.",
+    "gameBegins": "Most mindenki nyissa ki a szemét. A játék elkezdődik!"
   }
 }

@@ -31,6 +31,19 @@
       "messengers": "Messengers"
     }
   },
+  "characterCard": {
+    "maxCount": "Max: {count}",
+    "pairedWith": "Paired with: ",
+    "messengerGroup": "Grouped: @:characterSelection.modules.messengers",
+    "select": "Select",
+    "remove": "Remove",
+    "add": "Add",
+    "selectCharacter": "Select character",
+    "removeCharacter": "Remove character",
+    "removeOne": "Remove one",
+    "addOne": "Add one",
+    "addFirst": "Add first"
+  },
   "gameMaster": {
     "title": "Game Master",
     "backToSelection": "Back",
@@ -51,58 +64,141 @@
     "evilCharactersTitle": "Evil Characters ({count})"
   },
   "characters": {
-    "merlin": "Merlin",
-    "percival": "Percival", 
-    "loyal-servant": "Loyal Servant of Arthur",
-    "assassin": "Assassin",
-    "morgana": "Morgana",
-    "morgana-assassin": "Morgana",
-    "mordred": "Mordred",
-    "oberon": "Oberon",
-    "minion": "Minion of Mordred",
-    "good-lancelot": "Lancelot (Good)",
-    "evil-lancelot": "Lancelot (Evil)",
-    "arthur": "Arthur",
-    "gawain": "Gawain",
-    "tristan": "Tristan",
-    "isolde": "Isolde",
-    "gareth": "Gareth",
-    "gaheris": "Gaheris",
-    "guinevere": "Guinevere",
-    "ygraine": "Ygraine",
-    "nimue": "Nimue",
-    "titania": "Titania",
-    "maelegant": "Maelegant",
-    "agravaine": "Agravaine",
-    "colgrevance": "Colgrevance",
-    "lucan": "Lucan",
-    "bedivere": "Bedivere",
-    "galahad": "Galahad",
-    "lunete": "Lunete",
-    "cleric": "Cleric",
-    "ranger": "Ranger",
-    "untrustworthy-servant": "Untrustworthy Servant",
-    "untrustworthy-servant-assassin": "Untrustworthy Servant",
-    "senior-messenger": "Senior Messenger",
-    "messenger": "Messenger"
+    "merlin": {
+      "name": "Merlin",
+      "description": "Knows Evil. Must remain hidden."
+    },
+    "percival": {
+      "name": "Percival",
+      "description": "Knows @:characters.merlin.name"
+    },
+    "loyal-servant": {
+      "name": "Loyal Servant of Arthur",
+      "description": "Basic good character with no special abilities."
+    },
+    "troublemaker": {
+      "name": "Troublemaker",
+      "description": "Must lie about loyalty."
+    },
+    "cleric": {
+      "name": "Cleric",
+      "description": "Secretly investigate the first @:characters.leader.name"
+    },
+    "untrustworthy-servant": {
+      "name": "Untrustworthy Servant",
+      "description": "Appears Evil to @:characters.merlin.name . Knows the @:characters.assassin.name . Cannot play Quest Fail card. Can become Evil during the Recruitment phase."
+    },
+    "untrustworthy-servant-assassin": {
+      "name": "Untrustworthy Servant",
+      "description": "Appears Evil to @:characters.merlin.name . Knows @:characters.morgana.name . Cannot play Quest Fail card. Can become Evil during the Recruitment phase."
+    },
+    "good-lancelot": {
+      "name": "Good Lancelot",
+      "description": "Knows @:characters.evil-lancelot.name, or can switch allegiance."
+    },
+    "good-lancelot-unknown": {
+      "name": "Good Lancelot",
+      "description": "Can switch allegiance."
+    },
+    "good-rogue": {
+      "name": "Good Rogue",
+      "description": "May play Rogue Success."
+    },
+    "good-sorcerer": {
+      "name": "Good Sorcerer",
+      "description": "May play Magic."
+    },
+    "assassin": {
+      "name": "Assassin",
+      "description": "May activate Assassination stage if three Quests succeed."
+    },
+    "morgana": {
+      "name": "Morgana",
+      "description": "Appears as @:characters.merlin.name"
+    },
+    "morgana-assassin": {
+      "name": "Morgana",
+      "description": "Appears as @:characters.merlin.name . May activate Assassination stage if three Quests succeed."
+    },
+    "mordred": {
+      "name": "Mordred",
+      "description": "Unknown to @:characters.merlin.name "
+    },
+    "oberon": {
+      "name": "Oberon",
+      "description": "Unknown to Evil. Does not know Evil."
+    },
+    "minion-of-mordred": {
+      "name": "Minion of Mordred | Minions of Mordred",
+      "description": "A basic evil player."
+    },
+    "trickster": {
+      "name": "Trickster",
+      "description": "May lie about loyalty."
+    },
+    "lunatic": {
+      "name": "Lunatic",
+      "description": "Must Fail every Quest."
+    },
+    "brute": {
+      "name": "Brute",
+      "description": "May Fail only the first three Quests."
+    },
+    "revealer": {
+      "name": "Revealer",
+      "description": "Reveals loyalty after second failed Quest."
+    },
+    "evil-lancelot": {
+      "name": "Evil Lancelot",
+      "description": "Knows @:characters.good-lancelot.name, or can switch allegiance."
+    },
+    "evil-lancelot-unknown": {
+      "name": "Evil Lancelot",
+      "description": "Can switch allegiance."
+    },
+    "evil-rogue": {
+      "name": "Evil Rogue",
+      "description": "May play Rogue Fail. Unknown to Evil. Does not know Evil."
+    },
+    "evil-sorcerer": {
+      "name": "Evil Sorcerer",
+      "description": "May play Magic. May not play Fail."
+    },
+    "messenger": {
+      "name": "Evil Messenger",
+      "description": "May play Evil Message"
+    },
+    "senior-messenger": {
+      "name": "Good Messenger",
+      "description": "Knows @:characters.junior-messenger.name. May play Good Message."
+    },
+    "junior-messenger": {
+      "name": "Good Junior Messenger",
+      "description": "May play Good Message."
+    },
+    "leader": {
+      "name": "Leader",
+      "description": "The first quest leader with special responsibilities."
+    }
   },
   "gameScript": {
+    "and": " and ",
     "initialSpeech": "Everyone close your eyes and extend your hands into fists in front of you.",
-    "minionsReveal": "Minions of Mordred, {names}. Open your eyes and see your fellow evil players.",
-    "minionsRevealWithHidden": "Minions of Mordred, {visibleNames} but not {hiddenNames}. Open your eyes and see your fellow evil players.",
+    "minionsReveal": "{minions}, {names}. Open your eyes and see your fellow evil players.",
+    "minionsRevealWithHidden": "{minions}, {visibleNames} but not {hiddenNames}. Open your eyes and see your fellow evil players.",
     "closeEyes": "Now, close your eyes and reform your hands into fists.",
-    "merlinSees": "Minions of Mordred, {names}. Extend your thumbs.",
-    "merlinOpen": "Merlin, open your eyes and see the characters who appear evil to you.",
-    "percivalSees": "{names}. Extend your thumbs so Percival can see you.",
-    "percivalOpen": "Percival, open your eyes and see {names}.",
-    "clericCheck": "Leader, extend your thumb if you are evil.",
-    "clericOpen": "Cleric, open your eyes and see the alignment of the Leader.",
-    "untrustworthySees": "{names}. Extend your thumb so the Untrustworthy Servant can see you.",
-    "untrustworthyOpen": "Untrustworthy Servant, open your eyes and see the {names}.",
+    "merlinSees": "{minions}, {names}. Extend your thumbs.",
+    "merlinOpen": "@:characters.merlin.name , open your eyes and see the characters who appear evil to you.",
+    "percivalSees": "{names}. Extend your thumbs so @:characters.percival.name can see you.",
+    "percivalOpen": "@:characters.percival.name , open your eyes and see {names}.",
+    "clericCheck": "@:characters.leader.name , extend your thumb if you are evil.",
+    "clericOpen": "@:characters.cleric.name , open your eyes and see the alignment of the @:characters.leader.name .",
+    "untrustworthySees": "{names}. Extend your thumb so the @:characters.untrustworthy-servant.name can see you.",
+    "untrustworthyOpen": "@:characters.untrustworthy-servant.name , open your eyes and see the {names}.",
     "lancelots": "Lancelots. It's your turn now. Open your eyes to reveal your counterpart.",
     "lancelotsClose": "Now, close your eyes.",
-    "seniorMessengerSees": "{names}. Extend your thumb so the Senior Messenger can see you.",
-    "seniorMessengerOpen": "Senior Messenger, open your eyes and see the {names}.",
+    "seniorMessengerSees": "{names}. Extend your thumb so the @:characters.senior-messenger.name can see you.",
+    "seniorMessengerOpen": "@:characters.senior-messenger.name , open your eyes and see the {names}.",
     "gameBegins": "Everyone open your eyes. The game begins!"
   }
 }

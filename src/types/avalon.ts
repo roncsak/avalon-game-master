@@ -47,7 +47,7 @@ export const GAME_MODULES: GameModule[] = [
 
 export interface Character {
   id: string
-  name: string
+  originalName: string
   alignment: 'good' | 'evil'
   knows: 'none' | 'good' | 'evil' | string // character ID
   appearance?: Appearance[]
@@ -66,7 +66,7 @@ export const AVALON_CHARACTERS: Character[] = [
   // Good Characters
   {
     id: 'merlin',
-    name: 'Merlin',
+    originalName: 'Merlin',
     alignment: 'good',
     knows: 'evil',
     description: 'Knows Evil. Must remain hidden.',
@@ -77,7 +77,7 @@ export const AVALON_CHARACTERS: Character[] = [
   },
   {
     id: 'percival',
-    name: 'Percival',
+    originalName: 'Percival',
     alignment: 'good',
     knows: 'merlin',
     description: 'Knows Merlin',
@@ -88,7 +88,7 @@ export const AVALON_CHARACTERS: Character[] = [
   },
   {
     id: 'loyal-servant',
-    name: 'Loyal Servant of Arthur',
+    originalName: 'Loyal Servant of Arthur',
     alignment: 'good',
     knows: 'none',
     description: 'Basic good character with no special abilities',
@@ -99,7 +99,7 @@ export const AVALON_CHARACTERS: Character[] = [
   },
   {
     id: 'troublemaker',
-    name: 'Troublemaker',
+    originalName: 'Troublemaker',
     alignment: 'good',
     knows: 'none',
     description: 'Must lie about loyalty',
@@ -110,7 +110,7 @@ export const AVALON_CHARACTERS: Character[] = [
   },
   {
     id: 'cleric',
-    name: 'Cleric',
+    originalName: 'Cleric',
     alignment: 'good',
     knows: 'none',
     description: 'Secretly investigate the first Leader',
@@ -122,7 +122,7 @@ export const AVALON_CHARACTERS: Character[] = [
   },
   {
     id: 'untrustworthy-servant',
-    name: 'Untrustworthy Servant',
+    originalName: 'Untrustworthy Servant',
     alignment: 'good',
     knows: 'assassin',
     appearance: [{ appears: 'evil', to: 'merlin' }],
@@ -134,7 +134,7 @@ export const AVALON_CHARACTERS: Character[] = [
   },
   {
     id: 'untrustworthy-servant-assassin',
-    name: 'Untrustworthy Servant',
+    originalName: 'Untrustworthy Servant',
     alignment: 'good',
     knows: 'morgana-assassin',
     appearance: [{ appears: 'evil', to: 'merlin' }],
@@ -148,7 +148,7 @@ export const AVALON_CHARACTERS: Character[] = [
   // Paired Characters - Good versions
   {
     id: 'good-lancelot',
-    name: 'Good Lancelot',
+    originalName: 'Good Lancelot',
     alignment: 'good',
     knows: 'evil-lancelot',
     description: 'Knows Evil lancelot, or can switch allegiance.',
@@ -162,7 +162,7 @@ export const AVALON_CHARACTERS: Character[] = [
   },
   {
     id: 'good-lancelot-unknown',
-    name: 'Good Lancelot',
+    originalName: 'Good Lancelot',
     alignment: 'good',
     knows: 'none',
     description: 'Can switch allegiance.',
@@ -176,7 +176,7 @@ export const AVALON_CHARACTERS: Character[] = [
   },
   {
     id: 'good-rogue',
-    name: 'Good Rogue',
+    originalName: 'Good Rogue',
     alignment: 'good',
     knows: 'none',
     description: 'May play Rogue Success.',
@@ -187,7 +187,7 @@ export const AVALON_CHARACTERS: Character[] = [
   },
   {
     id: 'good-sorcerer',
-    name: 'Good Sorcerer',
+    originalName: 'Good Sorcerer',
     alignment: 'good',
     knows: 'none',
     description: 'May play Magic.',
@@ -203,7 +203,7 @@ export const AVALON_CHARACTERS: Character[] = [
   // Evil Characters
   {
     id: 'assassin',
-    name: 'Assassin',
+    originalName: 'Assassin',
     alignment: 'evil',
     knows: 'evil',
     description: 'May activate Assassination stage if three Quests succeed.',
@@ -214,7 +214,7 @@ export const AVALON_CHARACTERS: Character[] = [
   },
   {
     id: 'morgana',
-    name: 'Morgana',
+    originalName: 'Morgana',
     alignment: 'evil',
     knows: 'evil',
     appearance: [{ appears: 'merlin', to: 'percival' }],
@@ -226,7 +226,7 @@ export const AVALON_CHARACTERS: Character[] = [
   },
   {
     id: 'morgana-assassin',
-    name: 'Morgana',
+    originalName: 'Morgana',
     alignment: 'evil',
     knows: 'evil',
     appearance: [{ appears: 'merlin', to: 'percival' }],
@@ -238,7 +238,7 @@ export const AVALON_CHARACTERS: Character[] = [
   },
   {
     id: 'mordred',
-    name: 'Mordred',
+    originalName: 'Mordred',
     alignment: 'evil',
     knows: 'evil',
     appearance: [{ appears: 'good', to: 'merlin' }],
@@ -250,7 +250,7 @@ export const AVALON_CHARACTERS: Character[] = [
   },
   {
     id: 'oberon',
-    name: 'Oberon',
+    originalName: 'Oberon',
     alignment: 'evil',
     knows: 'none',
     appearance: [{ appears: 'good', to: 'evil' }],
@@ -262,7 +262,7 @@ export const AVALON_CHARACTERS: Character[] = [
   },
   {
     id: 'minion-of-mordred',
-    name: 'Minion of Mordred',
+    originalName: 'Minion of Mordred',
     alignment: 'evil',
     knows: 'evil',
     description: 'Basic evil character.',
@@ -273,7 +273,7 @@ export const AVALON_CHARACTERS: Character[] = [
   },
   {
     id: 'trickster',
-    name: 'Trickster',
+    originalName: 'Trickster',
     alignment: 'evil',
     knows: 'evil',
     description: 'May lie about loyalty.',
@@ -284,7 +284,7 @@ export const AVALON_CHARACTERS: Character[] = [
   },
   {
     id: 'lunatic',
-    name: 'Lunatic',
+    originalName: 'Lunatic',
     alignment: 'evil',
     knows: 'evil',
     description: 'Must Fail every Quest.',
@@ -295,7 +295,7 @@ export const AVALON_CHARACTERS: Character[] = [
   },
   {
     id: 'brute',
-    name: 'Brute',
+    originalName: 'Brute',
     alignment: 'evil',
     knows: 'evil',
     description: 'May Fail only the first three Quests.',
@@ -306,7 +306,7 @@ export const AVALON_CHARACTERS: Character[] = [
   },
   {
     id: 'revealer',
-    name: 'Revealer',
+    originalName: 'Revealer',
     alignment: 'evil',
     knows: 'evil',
     description: 'Reveals loyalty after second failed Quest.',
@@ -319,7 +319,7 @@ export const AVALON_CHARACTERS: Character[] = [
   // Paired Characters - Evil versions
   {
     id: 'evil-lancelot',
-    name: 'Evil Lancelot',
+    originalName: 'Evil Lancelot',
     alignment: 'evil',
     knows: 'evil',
     description: 'Knows Good Lancelot, or can switch allegiance.',
@@ -333,7 +333,7 @@ export const AVALON_CHARACTERS: Character[] = [
   },
   {
     id: 'evil-lancelot-unknown',
-    name: 'Evil Lancelot',
+    originalName: 'Evil Lancelot',
     alignment: 'evil',
     knows: 'none',
     description: 'Can switch allegiance.',
@@ -347,7 +347,7 @@ export const AVALON_CHARACTERS: Character[] = [
   },
   {
     id: 'evil-rogue',
-    name: 'Evil Rogue',
+    originalName: 'Evil Rogue',
     alignment: 'evil',
     knows: 'none',
     appearance: [{ appears: 'good', to: 'evil' }],
@@ -361,7 +361,7 @@ export const AVALON_CHARACTERS: Character[] = [
   // Paired Characters - Evil versions
   {
     id: 'evil-sorcerer',
-    name: 'Evil Sorcerer',
+    originalName: 'Evil Sorcerer',
     alignment: 'evil',
     knows: 'evil',
     description: 'May play Magic. May not play Fail.',
@@ -377,7 +377,7 @@ export const AVALON_CHARACTERS: Character[] = [
   // Messenger Characters
   {
     id: 'messenger',
-    name: 'EvilMessenger',
+    originalName: 'Evil Messenger',
     alignment: 'evil',
     knows: 'evil',
     description: 'May play Evil Message',
@@ -388,7 +388,7 @@ export const AVALON_CHARACTERS: Character[] = [
   },
   {
     id: 'senior-messenger',
-    name: 'Senior Messenger',
+    originalName: 'Senior Messenger',
     alignment: 'good',
     knows: 'junior-messenger',
     description: 'Knows Junior Messenger. May play Good Message.',
@@ -399,7 +399,7 @@ export const AVALON_CHARACTERS: Character[] = [
   },
   {
     id: 'junior-messenger',
-    name: 'Junior Messenger',
+    originalName: 'Messenger',
     alignment: 'good',
     knows: 'none',
     description: 'May play Good Message.',
@@ -476,7 +476,7 @@ export const validateCharacterSelection = (selectedCharacterIds: string[]): {
     if (missingPairs.length > 0) {
       const missingPairNames = missingPairs.map(id => {
         const character = AVALON_CHARACTERS.find(c => c.id === id)
-        return character?.name || id
+        return character?.originalName || id
       })
       message += `Missing required paired characters: ${missingPairNames.join(', ')}`
     }
@@ -484,7 +484,7 @@ export const validateCharacterSelection = (selectedCharacterIds: string[]): {
     if (missingMessengers.length > 0) {
       const missingMessengerNames = missingMessengers.map(id => {
         const character = AVALON_CHARACTERS.find(c => c.id === id)
-        return character?.name || id
+        return character?.originalName || id
       })
       if (message) message += '. '
       message += `All Messengers must be selected together. Missing: ${missingMessengerNames.join(', ')}`
@@ -544,14 +544,14 @@ export const validateModuleSelection = (selectedCharacterIds: string[], enabledM
     if (unavailableCharacters.length > 0) {
       const unavailableNames = unavailableCharacters.map(id => {
         const character = AVALON_CHARACTERS.find(c => c.id === id)
-        return character?.name || id
+        return character?.originalName || id
       })
       message += `Characters requiring disabled modules: ${unavailableNames.join(', ')}`
     }
     if (incompatibleCharacters.length > 0) {
       const incompatibleNames = incompatibleCharacters.map(id => {
         const character = AVALON_CHARACTERS.find(c => c.id === id)
-        return character?.name || id
+        return character?.originalName || id
       })
       if (message) message += '. '
       message += `Characters incompatible with enabled modules: ${incompatibleNames.join(', ')}`

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, watch, onMounted } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { 
   AVALON_CHARACTERS, 
   GAME_MODULES,
@@ -12,6 +13,8 @@ import {
 } from '../types/avalon'
 import CharacterCard from './CharacterCard.vue'
 import { useGameStore } from '../stores/gameStore'
+
+const { t } = useI18n()
 
 const emit = defineEmits<{
   charactersSelected: [characterIds: string[], modules: string[]]
@@ -211,10 +214,10 @@ const resetSelection = () => {
         <v-card elevation="2" class="pa-4 text-center">
           <v-card-title class="text-h4">
             <v-icon class="me-2 text-primary">mdi-account-group</v-icon>
-            Character Selection
+            {{ t('characterSelection.title') }}
           </v-card-title>
           <v-card-text>
-            <p class="text-body-1 mb-4">Select characters for your Avalon game</p>
+            <p class="text-body-1 mb-4">{{ t('characterSelection.subtitle') }}</p>
             
             <!-- Player Count Selector -->
             <v-row justify="center">
@@ -222,7 +225,7 @@ const resetSelection = () => {
                 <v-select
                   v-model="gameStore.playerCount"
                   :items="[5, 6, 7, 8, 9, 10]"
-                  label="Number of Players"
+                  :label="t('characterSelection.playerCount')"
                   variant="outlined"
                   prepend-inner-icon="mdi-account-multiple"
                 ></v-select>
@@ -238,7 +241,7 @@ const resetSelection = () => {
                   size="large"
                 >
                   <v-icon start>mdi-shield-check</v-icon>
-                  Good: {{ selectedGoodCount }}/{{ recommendedCounts.good }}
+                  {{ t('characterSelection.goodCharacters') }}: {{ selectedGoodCount }}/{{ recommendedCounts.good }}
                 </v-chip>
               </v-col>
               <v-col cols="6">
@@ -248,7 +251,7 @@ const resetSelection = () => {
                   size="large"
                 >
                   <v-icon start>mdi-skull</v-icon>
-                  Evil: {{ selectedEvilCount }}/{{ recommendedCounts.evil }}
+                  {{ t('characterSelection.evilCharacters') }}: {{ selectedEvilCount }}/{{ recommendedCounts.evil }}
                 </v-chip>
               </v-col>
             </v-row>
@@ -256,7 +259,7 @@ const resetSelection = () => {
             <!-- Module Selection -->
             <v-row class="mt-4">
               <v-col cols="12">
-                <h3 class="text-h6 mb-3">Game Modules</h3>
+                <h3 class="text-h6 mb-3">{{ t('characterSelection.gameModules') }}</h3>
                 <div class="d-flex flex-wrap gap-2">
                   <v-chip
                     v-for="module in GAME_MODULES"
@@ -269,7 +272,7 @@ const resetSelection = () => {
                     class="ma-1"
                   >
                     <v-icon start :icon="selectedModules.includes(module.id) ? 'mdi-check' : 'mdi-plus'" />
-                    {{ module.name }}
+                    {{ t(`characterSelection.modules.${module.id}`) }}
                   </v-chip>
                 </div>
                 <p class="text-caption mt-2 text-medium-emphasis">
@@ -315,7 +318,7 @@ const resetSelection = () => {
       <v-col cols="12">
         <h2 class="text-h5 mb-3 d-flex align-center">
           <v-icon class="me-2 text-success">mdi-shield-check</v-icon>
-          Good Characters
+          {{ t('characterSelection.goodCharacters') }}
         </h2>
       </v-col>
     </v-row>
@@ -323,7 +326,7 @@ const resetSelection = () => {
     <v-row>
       <v-col 
         v-for="character in goodCharacters"
-        :key="character.name"
+        :key="character.originalName"
         cols="12"
         sm="6"
         md="4"
@@ -343,7 +346,7 @@ const resetSelection = () => {
       <v-col cols="12">
         <h2 class="text-h5 mb-3 d-flex align-center">
           <v-icon class="me-2 text-error">mdi-skull</v-icon>
-          Evil Characters
+          {{ t('characterSelection.evilCharacters') }}
         </h2>
       </v-col>
     </v-row>
@@ -351,7 +354,7 @@ const resetSelection = () => {
     <v-row>
       <v-col 
         v-for="character in evilCharacters"
-        :key="character.name"
+        :key="character.originalName"
         cols="12"
         sm="6"
         md="4"
@@ -380,7 +383,7 @@ const resetSelection = () => {
                 @click="resetSelection"
                 prepend-icon="mdi-refresh"
               >
-                Reset
+                {{ t('characterSelection.resetSelection') }}
               </v-btn>
             </v-col>
             <v-col cols="6">
@@ -393,7 +396,7 @@ const resetSelection = () => {
                 :disabled="!isValidSelection"
                 prepend-icon="mdi-play"
               >
-                Start Game
+                {{ t('characterSelection.startGame') }}
               </v-btn>
             </v-col>
           </v-row>
