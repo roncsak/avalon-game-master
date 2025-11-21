@@ -8,7 +8,9 @@ export default defineConfig({
     vue(),
     vuetify({ autoImport: true })
   ],
-  base: process.env.NODE_ENV === 'production' ? '/avalonspeaks/' : '/',
+  base: process.env.NODE_ENV === 'production' 
+    ? (process.env.VITE_BASE_URL || '/avalon-game-master/')
+    : '/',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
