@@ -1,0 +1,76 @@
+/* Mobile-first CSS Reset and Optimization */
+
+/* Smooth scrolling for better mobile experience */
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Mobile-optimized body styles */
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+}
+
+/* Remove default Vite app styles that conflict with mobile-first approach */
+#app {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+/* Improve touch targets */
+button, .v-btn {
+  min-height: 44px;
+  min-width: 44px;
+  touch-action: manipulation;
+}
+
+/* Optimize images for mobile */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Remove tap highlight on mobile */
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+/* Improve focus states for accessibility */
+.v-btn:focus-visible,
+.v-text-field:focus-within,
+.v-select:focus-within {
+  outline: 2px solid #1976D2;
+  outline-offset: 2px;
+}
+
+/* Mobile-specific overrides */
+@media (max-width: 600px) {
+  /* Reduce padding on small screens */
+  .v-container {
+    padding: 12px;
+  }
+  
+  /* Larger touch targets on mobile */
+  .v-btn {
+    min-height: 48px;
+  }
+  
+  /* Optimize card spacing */
+  .v-card {
+    margin-bottom: 16px;
+  }
+  
+  /* Better text readability */
+  .v-card-title {
+    font-size: 1.25rem !important;
+    line-height: 1.4;
+  }
+}
