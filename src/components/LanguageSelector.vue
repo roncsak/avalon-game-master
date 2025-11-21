@@ -59,9 +59,9 @@ const selectedLanguage = computed({
         <span class="d-none d-sm-inline">
           {{ t('app.language') }}
         </span>
-        <span class="d-sm-none">
+        <!-- <span class="d-sm-none">
           <v-icon>mdi-translate</v-icon>
-        </span>
+        </span> -->
       </v-btn>
     </template>
     

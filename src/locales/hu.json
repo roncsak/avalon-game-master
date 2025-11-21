@@ -22,13 +22,12 @@
       "moduleRequired": "Legalább egy modult ki kell választani"
     },
     "modules": {
-      "all": "Minden karakter",
-      "standard": "Alap játék",
-      "lancelot": "Lancelot",
+      "all": "Alapkarakterek",
+      "lancelot": "Csapatváltó Lancelotok",
       "morgana-assassin": "Morgana mint Assassin",
-      "rogue": "Zsiványok",
-      "sorcerer": "Varázslók", 
-      "messengers": "Hírnökök"
+      "rogue": "Zsiványok (Rogue) modul",
+      "sorcerer": "Varázslók (Sorcerer) modul",
+      "messengers": "Hírnökök (Messenger) modul"
     }
   },
   "characterCard": {
@@ -169,7 +168,7 @@
       "description": "Kijátszhat Gonosz Message kártyát."
     },
     "senior-messenger": {
-      "name": "Good Messenger",
+      "name": "Tapasztalt Hírnök",
       "description": "Ismeri: @:characters.junior-messenger.name  @:characters.junior-messenger.description"
     },
     "junior-messenger": {
@@ -184,21 +183,21 @@
   "gameScript": {
     "and": " és ",
     "initialSpeech": "Mindenki csukja be a szemét és tartsa az ökölbe szorított kezét maga elé.",
-    "minionsReveal": "{minions}, {names}. Nyissátok ki a szemeteket és ismerjétek meg társaitokat.",
+    "minionsReveal": "{minions}, {names}. Nyissátok ki a szemeteket és ismerjétek meg egymást.",
     "minionsRevealWithHidden": "{minions}, {visibleNames}, kivéve {hiddenNames}. Nyissátok ki a szemeteket és ismerjétek meg társaitokat.",
     "closeEyes": "Most csukjátok be a szemeteket és ismételten szorítsátok ökölbe a kezeteket.",
     "merlinSees": "{minions}, {names}. Mutassatok oké jelet.",
-    "merlinOpen": "@:characters.merlin , nyisd ki a szemed és nézd meg, hogy kik mutatkoznak gonosznak számodra.",
-    "percivalSees": "{names}. Mutassatok oké jelet, hogy @:characters.percival felfedezhessen titeket.",
-    "percivalOpen": "@:characters.percival , nyisd ki a szemed, hogy lásd a következő karaktereket: {names}.",
-    "clericCheck": "@:characters.leader , mutass oké jelet, amennyiben gonosznak kell mutatkoznod.",
-    "clericOpen": "@:characters.cleric , nyisd ki a szemed és nézd meg a @:characters.leader hovatartozását.",
-    "untrustworthySees": "{names}. Mutass oké jelet, hogy a @:characters.untrustworthy-servant felfedezhessen.",
-    "untrustworthyOpen": "@:characters.untrustworthy-servant, nyisd ki a szemed, hogy lásd a következő karaktereket: {names}.",
+    "merlinOpen": "@:characters.merlin.name , nyisd ki a szemed és nézd meg, hogy kik mutatkoznak gonosznak számodra.",
+    "percivalSees": "{names}. Mutassatok oké jelet, hogy @:characters.percival.name felfedezhessen titeket.",
+    "percivalOpen": "@:characters.percival.name , nyisd ki a szemed, hogy lásd a következő karaktereket: {names}.",
+    "clericCheck": "@:characters.leader.name , mutass oké jelet, amennyiben gonosznak kell mutatkoznod.",
+    "clericOpen": "@:characters.cleric.name , nyisd ki a szemed és nézd meg a @:characters.leader.name hovatartozását.",
+    "untrustworthySees": "{names}. Mutass oké jelet, hogy a @:characters.untrustworthy-servant.name felfedezhessen.",
+    "untrustworthyOpen": "@:characters.untrustworthy-servant.name , nyisd ki a szemed, hogy lásd a következő karaktereket: {names}.",
     "lancelots": "Lancelotok, ti következtek. Nyissátok ki a szemeteket, hogy felfedezzétek egymást.",
     "lancelotsClose": "Most, csukjátok be a szemeteket.",
-    "seniorMessengerSees": "{names}. Mutass oké jelet, hogy a @:characters.senior-messenger felfedezhessen téged.",
-    "seniorMessengerOpen": "@:characters.senior-messenger , nyisd ki a szemed, hogy megtudd ki a {names}.",
+    "seniorMessengerSees": "{names}. Mutass oké jelet, hogy a @:characters.senior-messenger.name felfedezhessen téged.",
+    "seniorMessengerOpen": "@:characters.senior-messenger.name , nyisd ki a szemed, hogy megtudd ki a {names}.",
     "gameBegins": "Most mindenki nyissa ki a szemét. A játék elkezdődik!"
   }
 }

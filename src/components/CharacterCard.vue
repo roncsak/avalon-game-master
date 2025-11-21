@@ -88,7 +88,7 @@ const removeCharacter = () => {
       <h3 class="text-h6 mb-2" :class="getCharacterCount > 0 ? 'text-white' : ''">
         {{ t(`characters.${character.id}.name`) }}
         <span v-if="locale !== 'en'" class="text-caption d-block text-white-darken-1">
-          ({{ t(`characters.${character.id}.name`, {}, { locale: 'en' }) }})
+          ({{ AVALON_CHARACTERS.find(c => c.id === character.id)?.originalName }})
         </span>
       </h3>
       

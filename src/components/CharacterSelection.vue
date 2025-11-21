@@ -234,7 +234,7 @@ const resetSelection = () => {
             
             <!-- Selection Summary -->
             <v-row>
-              <v-col cols="6">
+              <v-col cols="12" sm="6">
                 <v-chip 
                   :color="selectedGoodCount === recommendedCounts.good ? 'success' : 'warning'"
                   variant="elevated"
@@ -244,7 +244,7 @@ const resetSelection = () => {
                   {{ t('characterSelection.goodCharacters') }}: {{ selectedGoodCount }}/{{ recommendedCounts.good }}
                 </v-chip>
               </v-col>
-              <v-col cols="6">
+              <v-col cols="12" sm="6">
                 <v-chip 
                   :color="selectedEvilCount === recommendedCounts.evil ? 'error' : 'warning'"
                   variant="elevated"
@@ -374,7 +374,7 @@ const resetSelection = () => {
       <v-col cols="12">
         <v-card elevation="1" class="pa-4">
           <v-row>
-            <v-col cols="6">
+            <v-col cols="12" sm="6">
               <v-btn
                 color="grey"
                 variant="outlined"
@@ -386,7 +386,7 @@ const resetSelection = () => {
                 {{ t('characterSelection.resetSelection') }}
               </v-btn>
             </v-col>
-            <v-col cols="6">
+            <v-col cols="12" sm="6">
               <v-btn
                 color="primary"
                 variant="elevated"

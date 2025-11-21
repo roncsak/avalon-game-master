@@ -423,7 +423,7 @@ onMounted(() => {
           </v-card-title>
           <v-card-text>
             <v-row>
-              <v-col cols="12" md="4">
+              <v-col cols="12" md="6">
                 <v-select
                   v-model="selectedLanguage"
                   :items="availableLanguages"
@@ -434,7 +434,7 @@ onMounted(() => {
                   :disabled="isPlaying"
                 ></v-select>
               </v-col>
-              <v-col cols="12" md="8">
+              <v-col cols="12" md="6">
                 <v-select
                   v-model="selectedVoiceModel"
                   :items="filteredVoices"
@@ -445,7 +445,7 @@ onMounted(() => {
                   :no-data-text="t('gameMaster.noVoicesMatch')"
                 ></v-select>
               </v-col>
-              <v-col cols="6" md="4">
+              <v-col cols="12" md="6">
                 <v-slider
                   v-model="speechRateModel"
                   :min="0.5"
@@ -455,7 +455,7 @@ onMounted(() => {
                   thumb-label
                 ></v-slider>
               </v-col>
-              <v-col cols="6" md="4">
+              <v-col cols="12" md="6">
                 <v-slider
                   v-model="speechPitchModel"
                   :min="0.5"
@@ -517,7 +517,7 @@ onMounted(() => {
       <v-col cols="12">
         <v-card elevation="1" class="pa-4">
           <v-row>
-            <v-col cols="6">
+            <v-col cols="12" sm="6">
               <v-btn
                 v-if="!isPlaying"
                 color="primary"
@@ -542,7 +542,7 @@ onMounted(() => {
                 {{ t('gameMaster.stopNarration') }}
               </v-btn>
             </v-col>
-            <v-col cols="6">
+            <v-col cols="12" sm="6">
               <v-btn
                 color="grey"
                 variant="outlined"
