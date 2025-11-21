@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref, computed, watch, onMounted } from 'vue'
-import { useI18n } from 'vue-i18n'
 import { 
   AVALON_CHARACTERS, 
   GAME_MODULES,
@@ -14,7 +13,6 @@ import {
 import CharacterCard from './CharacterCard.vue'
 import { useGameStore } from '../stores/gameStore'
 
-const { t } = useI18n()
 const emit = defineEmits<{
   charactersSelected: [characterIds: string[], modules: string[]]
 }>()

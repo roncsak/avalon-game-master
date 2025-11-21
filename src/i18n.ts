@@ -18,7 +18,11 @@ export function getBrowserLocale(): string {
   const languageCode = navigatorLocale.split('-')[0]
   
   // Check if we support this language
-  return SUPPORT_LOCALES.includes(languageCode) ? languageCode : 'en'
+  if (languageCode && SUPPORT_LOCALES.includes(languageCode)) {
+    return languageCode
+  }
+  
+  return 'en'
 }
 
 // Function to load locale messages dynamically
